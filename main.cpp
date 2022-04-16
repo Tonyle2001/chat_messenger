@@ -6,6 +6,7 @@
 
 
 #include <iostream>
+#include <string>
 #include "Message.h"
 #include "User.h"
 
@@ -24,7 +25,6 @@ void option_1();
 
 void option_3();
 
-// this a change
 
 //global variable
 int choice = 0;
@@ -39,6 +39,7 @@ int main() {
 
     // function calls
     first_page();
+    User current(name);
     main_page();
 
     return 0;

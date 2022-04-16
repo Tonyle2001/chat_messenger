@@ -5,8 +5,9 @@
 #include "User.h"
 #include <iostream>
 #include <string>
-
 #include <fstream>
+#include <istream>
+//#include <iosfwd>
 
 
 
@@ -50,7 +51,46 @@ void User::set_password(string password){
 //functions
 bool User::authenticate(){
 
-    return true;// this will be replace later when I learn how to use read and write
+    ifstream check_file;
+
+    check_file.open(get_username() + ".txt");
+
+    string check_pass;
+
+    if(check_file.is_open()) {
+
+        while(getline(check_file, check_pass, ':')) {
+            getline(check_file, check_pass, ':');
+            if (check_pass.compare(get_user_password()) == 0) {
+                check_file.close();
+                return true;
+            } else {
+                check_file.close();
+                return false;
+            }
+        }
+    }
+    else
+        cout << "\n This user does not exist or you have entered an invalid password.\n" << endl;
+    //cout << check_pass << endl;
+
+
+//    if(check_pass.compare(get_user_password())) {
+//        cout << check_pass << endl;
+//        return true;
+//    }
+//    else
+//        return false;
+
+
+
+
+
+//    if(check_file)
+//        return true;
+//    else
+//        return false;
+    //return true;// this will be replace later when I learn how to use read and write
 }
 
 bool User::check_unique(){
@@ -73,7 +113,7 @@ void User::get_user_status(){
 
     ofstream make_file(get_username() + ".txt");
 
-    make_file << "Password: " << get_user_password() + "\n" << endl;
+    make_file << ':' << get_user_password() + ":\n" << endl;
 
     if(make_file){
 
@@ -84,6 +124,6 @@ void User::get_user_status(){
 
     make_file.close();
 
-    cout << "Your profile has been made!\n" << endl;
+    //cout << "Your profile has been made!\n" << endl;
 
 }

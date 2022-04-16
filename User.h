@@ -25,12 +25,12 @@ public:
     bool authenticate();
     bool check_unique();
     void get_user_status();
-
+    void set_username(string);
+    void set_password(string);
 protected:
     string username;
 
-    void set_username(string);
-    void set_password(string);
+
 
 
 

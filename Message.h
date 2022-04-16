@@ -14,7 +14,7 @@ using namespace std;
 
 
 
-class Message {
+class Message : public User{
 
 };
 

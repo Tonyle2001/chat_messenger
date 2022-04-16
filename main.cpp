@@ -19,9 +19,9 @@ void login_page();
 
 void new_user_page();
 
-void main_page();
+void main_page(string);
 
-void option_1();
+void option_1(string);
 
 void option_3();
 
@@ -40,7 +40,7 @@ int main() {
     // function calls
     first_page();
     User current(name);
-    main_page();
+    main_page(current.get_username());
 
     return 0;
 }
@@ -111,9 +111,10 @@ void new_user_page(){
 
 }
 
-void main_page(){
+void main_page(string cur_name){
 
     int option = 0;
+    string from_person;
     while(option != 4 ){
 
         cout << "\n\tWelcome to Tony's messenger app!\n\n";
@@ -124,8 +125,8 @@ void main_page(){
         cout << "\t4) Logout\n" << endl;
         cin >> option;
 
-//        if(option == 1)
-//            option_1();
+       if(option == 1)
+           option_1(from_person);
 //
 //        else if(option == 3)
 //            option_3();
@@ -135,6 +136,31 @@ void main_page(){
 
 }
 
-void option_1();
+void option_1(string from){
+
+    string from_person = from;
+    string to_person;
+    string chat;
+    bool see = false;
+
+    do{
+        cout << "Who is the user you want to send a message to?\n";
+        cin >> to_person;
+        User check(to_person);
+        see = check.check_unique();
+
+        if(see != true)
+            cout << "\n This user does not exist!\n" << endl;
+
+    }while(see != true); //function in User class that will return bool to see if User entered in a valid name.
+
+    cout << "What is the message you would like to send?\n";
+    cin >> chat;
+    Message send(chat,from_person, to_person);
+    send.out_go(); //function in Message class that will write a message to txt file to a specific location under receiver.
+    cout << "Message was sent!" << endl;
+
+
+}
 
 void option_3();

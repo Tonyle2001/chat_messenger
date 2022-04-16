@@ -15,6 +15,21 @@ using namespace std;
 
 
 class Message : public User{
+public:
+
+    //constructor
+    Message(string, string, string);
+
+    //getters
+    string get_mail();
+    string get_receiver();
+
+    //functions
+    void out_go();
+
+protected:
+    string mail;
+    string receiver;
 
 };
 

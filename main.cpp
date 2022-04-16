@@ -35,6 +35,9 @@ string pass_2;
 
 int main() {
 
+    //User profile();
+
+
     // function calls
     first_page();
     main_page();
@@ -78,6 +81,10 @@ void login_page() {
 void new_user_page(){
 
 
+    bool unique = true;
+
+    while(unique == true) {
+
     bool unique = false;
 
     while(unique != true){
@@ -86,6 +93,10 @@ void new_user_page(){
         cin >> name;
         User create(name);
         unique = create.check_unique();
+        if (unique == true)
+            cout << "This username is taken." << endl;
+    }
+
         if(unique == false)
             cout << "This username is taken." << endl;
 
@@ -100,6 +111,12 @@ void new_user_page(){
 
         }while (pass != pass_2);
 
+        User profile(name, pass);
+        //profile.set_username(name);
+        //profile.set_password(pass);
+        profile.get_user_status(); // this will check if the user was successfully added
+
+
         User final(name, pass);
         final.get_user_status(); // this will check if the user was successfully added
     }
@@ -109,6 +126,8 @@ void main_page(){
 
     int option = 0;
     while(option != 4 ){
+
+        cout << "\n\tWelcome to Tony's messenger app!\n\n";
 
         cout << "\n\tWelcome to Tony's messenger app!\n";
         cout << "What would you like to do? (Enter Number Option)\n";

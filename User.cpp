@@ -72,25 +72,7 @@ bool User::authenticate(){
     }
     else
         cout << "\n This user does not exist or you have entered an invalid password.\n" << endl;
-    //cout << check_pass << endl;
 
-
-//    if(check_pass.compare(get_user_password())) {
-//        cout << check_pass << endl;
-//        return true;
-//    }
-//    else
-//        return false;
-
-
-
-
-
-//    if(check_file)
-//        return true;
-//    else
-//        return false;
-    //return true;// this will be replace later when I learn how to use read and write
 }
 
 bool User::check_unique(){
@@ -103,8 +85,6 @@ bool User::check_unique(){
         return true;
     else
         return false;
-
-    return true; // this will be replace later when I learn how to use read and write
 
 }
 
@@ -123,7 +103,5 @@ void User::get_user_status(){
 
 
     make_file.close();
-
-    //cout << "Your profile has been made!\n" << endl;
 
 }

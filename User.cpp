@@ -73,7 +73,7 @@ void User::get_user_status(){
 
     ofstream make_file(get_username() + ".txt");
 
-    make_file << get_user_password() + "\n" << endl;
+    make_file << "Password: " << get_user_password() + "\n" << endl;
 
     if(make_file){
 

@@ -24,7 +24,7 @@ void option_1();
 
 void option_3();
 
-
+// this a change
 
 //global variable
 int choice = 0;
@@ -36,7 +36,6 @@ string pass_2;
 int main() {
 
     //User profile();
-
 
     // function calls
     first_page();
@@ -85,10 +84,6 @@ void new_user_page(){
 
     while(unique == true) {
 
-    bool unique = false;
-
-    while(unique != true){
-
         cout << "Enter Username of choice: " << endl;
         cin >> name;
         User create(name);
@@ -96,9 +91,6 @@ void new_user_page(){
         if (unique == true)
             cout << "This username is taken." << endl;
     }
-
-        if(unique == false)
-            cout << "This username is taken." << endl;
 
         do{
             cout << "Enter password of choice: \n";
@@ -116,10 +108,6 @@ void new_user_page(){
         //profile.set_password(pass);
         profile.get_user_status(); // this will check if the user was successfully added
 
-
-        User final(name, pass);
-        final.get_user_status(); // this will check if the user was successfully added
-    }
 }
 
 void main_page(){
@@ -128,8 +116,6 @@ void main_page(){
     while(option != 4 ){
 
         cout << "\n\tWelcome to Tony's messenger app!\n\n";
-
-        cout << "\n\tWelcome to Tony's messenger app!\n";
         cout << "What would you like to do? (Enter Number Option)\n";
         cout << "\t1) Send a message to a another user\n";
         cout << "\t2) Send a mass message to multiple user\n";

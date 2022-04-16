@@ -12,14 +12,10 @@ using namespace std;
 class User {
 public:
 
-
     User();
     //This is used to validate existing users
     User(string, string);
     //This is to validate if username has been taken
-
-    User(string, string);
-
     User(string);
 
     //getters
@@ -33,10 +29,8 @@ public:
 protected:
     string username;
 
-
     void set_username(string);
     void set_password(string);
-
 
 
 

@@ -7,8 +7,10 @@
 
 #include <iostream>
 #include <string>
+#include <limits>
 #include "Message.h"
 #include "User.h"
+#include <stdio.h>
 
 using namespace std;
 
@@ -115,7 +117,7 @@ void main_page(string cur_name){
 
     int option = 0;
     string from_person;
-    while(option != 4 ){
+    do{
 
         cout << "\n\tWelcome to Tony's messenger app!\n\n";
         cout << "What would you like to do? (Enter Number Option)\n";
@@ -125,12 +127,17 @@ void main_page(string cur_name){
         cout << "\t4) Logout\n" << endl;
         cin >> option;
 
-       if(option == 1)
-           option_1(from_person);
+        if(option == 1) {
+            option_1(from_person);
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            //option = 0;
+        }
+
 //
 //        else if(option == 3)
 //            option_3();
-    }
+    }while(option != 4 );
 
     cout << "\n\tThank you for using my app!" << endl;
 
@@ -155,9 +162,14 @@ void option_1(string from){
     }while(see != true); //function in User class that will return bool to see if User entered in a valid name.
 
     cout << "What is the message you would like to send?\n";
-    cin >> chat;
+
+    getline(cin >>ws, chat);
+
+    //cout << chat << endl;
+
     Message send(chat,from_person, to_person);
     send.out_go(); //function in Message class that will write a message to txt file to a specific location under receiver.
+    //cout << send.get_mail() << endl;
     cout << "Message was sent!" << endl;
 
 

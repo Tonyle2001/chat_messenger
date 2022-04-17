@@ -11,7 +11,7 @@
 using namespace std;
 
 
-Message::Message(string mes, string from_user, string to_user)
+Message::Message(string mes, string to_user, string from_user)
     :mail{mes}, receiver{to_user}, User_Message(from_user)
 {}
 
@@ -23,18 +23,21 @@ string Message::get_mail(){
 string Message::get_receiver(){
     return this->receiver;
 }
+string Message::get_sender() {
+    return User_Message.get_username();
+}
 
 //functions
 void Message::out_go(){
 
     //
-    ofstream send_file1(User_Message.get_username() + ".txt",ios::app);
-    send_file1 << ":\t\t" << get_mail() << ":" << endl;
+    ofstream send_file1(get_sender() + ".txt",ios::app);
+    send_file1 << get_sender() << ":" << get_mail() << ":" << endl;
     send_file1.close();
 
     //
     ofstream send_file2(get_receiver() + ".txt", ios::app);
-    send_file2 << ":" << get_mail() << ":" << endl;
+    send_file2 << get_sender() <<":" << get_mail() << ":" << endl;
     send_file2.close();
 
 }

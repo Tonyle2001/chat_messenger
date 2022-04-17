@@ -14,7 +14,7 @@ using namespace std;
 
 
 
-class Message : public User{
+class Message : public User, public basic_string<char>{
 public:
 
     //constructor
@@ -23,6 +23,7 @@ public:
     //getters
     string get_mail();
     string get_receiver();
+    string get_sender();
 
     //functions
     void out_go();

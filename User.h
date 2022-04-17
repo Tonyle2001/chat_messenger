@@ -27,8 +27,10 @@ public:
     void get_user_status();
     void set_username(string);
     void set_password(string);
-protected:
+
     string username;
+protected:
+    //string username;
 
 
 

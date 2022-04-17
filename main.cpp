@@ -116,7 +116,6 @@ void new_user_page(){
 void main_page(string cur_name){
 
     int option = 0;
-    string from_person;
     do{
 
         cout << "\n\tWelcome to Tony's messenger app!\n\n";
@@ -128,7 +127,7 @@ void main_page(string cur_name){
         cin >> option;
 
         if(option == 1) {
-            option_1(from_person);
+            option_1(cur_name);
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             //option = 0;
@@ -167,10 +166,10 @@ void option_1(string from){
 
     //cout << chat << endl;
 
-    Message send(chat,from_person, to_person);
+    Message send(chat, to_person, from_person);
     send.out_go(); //function in Message class that will write a message to txt file to a specific location under receiver.
     //cout << send.get_mail() << endl;
-    cout << "Message was sent!" << endl;
+    cout << "Message was sent!\n(Hit 'Enter' to continue)" << endl;
 
 
 }

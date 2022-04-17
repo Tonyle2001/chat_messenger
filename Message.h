@@ -28,9 +28,12 @@ public:
     void out_go();
 
 protected:
+
+private:
     string mail;
     string receiver;
 
+    User User_Message;
 };
 
 

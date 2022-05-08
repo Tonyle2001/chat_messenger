@@ -15,6 +15,10 @@ Message::Message(string mes, string to_user, string from_user)
     :mail{mes}, receiver{to_user}, User_Message(from_user)
 {}
 
+Message::Message(string friend_user, string viewer_user)
+        :receiver{friend_user}, User_Message(viewer_user)
+{}
+
 
 //getters
 string Message::get_mail(){
@@ -40,4 +44,17 @@ void Message::out_go(){
     send_file2 << get_sender() <<":" << get_mail() << ":" << endl;
     send_file2.close();
 
+}
+
+void Message::print_history(){
+
+    ifstream view_file;
+
+    view_file.open(get_sender() + ".txt");
+
+    string sentence;
+
+    while(getline(view_file, sentence)){
+        cout << sentence << endl;
+    }
 }

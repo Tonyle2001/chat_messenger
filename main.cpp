@@ -25,7 +25,7 @@ void main_page(string);
 
 void option_1(string);
 
-void option_3();
+void option_3(string);
 
 
 //global variable
@@ -128,14 +128,17 @@ void main_page(string cur_name){
 
         if(option == 1) {
             option_1(cur_name);
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             //option = 0;
         }
 
 //
-//        else if(option == 3)
-//            option_3();
+        else if(option == 3) {
+            option_3(cur_name);
+        }
+
+
     }while(option != 4 );
 
     cout << "\n\tThank you for using my app!" << endl;
@@ -169,9 +172,30 @@ void option_1(string from){
     Message send(chat, to_person, from_person);
     send.out_go(); //function in Message class that will write a message to txt file to a specific location under receiver.
     //cout << send.get_mail() << endl;
-    cout << "Message was sent!\n(Hit 'Enter' to continue)" << endl;
+    cout << "Message was sent!" << endl;
 
 
 }
 
-void option_3();
+void option_3(string viewer){
+
+    string viewer_person = viewer;
+    string friend_person;
+    string chat;
+    bool see = false;
+
+    do{
+        cout << "Enter the user of the chat history you want to view.\n";
+        cin >> friend_person;
+        User check(friend_person);
+        see = check.check_unique();
+
+        if(see != true)
+            cout << "\n This user does not exist!\n" << endl;
+
+    }while(see != true); //function in User class that will return bool to see if User entered in a valid name.
+
+    Message look(friend_person, viewer_person);
+    look.print_history();
+
+}

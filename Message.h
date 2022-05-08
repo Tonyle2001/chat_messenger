@@ -19,14 +19,18 @@ public:
 
     //constructor
     Message(string, string, string);
+    Message(string, string);
 
     //getters
     string get_mail();
+    //friend
     string get_receiver();
+    //viewer
     string get_sender();
 
     //functions
     void out_go();
+    void print_history();
 
 protected:
 

@@ -50,11 +50,20 @@ void Message::print_history(){
 
     ifstream view_file;
 
-    view_file.open(get_sender() + ".txt");
+    view_file.open(get_receiver() + ".txt");
 
     string sentence;
+    int viewer_len = get_sender().length();
+    int friend_len = get_receiver().length();
 
     while(getline(view_file, sentence)){
-        cout << sentence << endl;
+        //print if this is the viewers message to friend
+        if(sentence.compare(0,viewer_len,get_sender()) == 0)
+            cout << sentence << endl;
+            //hi
+        // print if this is the viewers message to friend
+        else if(sentence.compare(0,friend_len,get_receiver()) == 0)
+            cout << sentence << endl;
+        //cout << sentence << endl;
     }
 }
